@@ -2,12 +2,15 @@ package com.langsin.model;
 
 import java.util.Date;
 
+import com.google.gson.annotations.Expose;
+
 public class Product {
 
 	private int id;
 	private String pname;
 	private double price;
 	private Date pdate;
+	@Expose(deserialize=false)
 	private String image;
 	private String content;
 	private int ptype;

@@ -43,7 +43,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     function callback(){
 		if(xmlhttp.readyState == 4){
 			if(xmlhttp.status == 200){
-				alert("请求成功");
+				var result = xmlhttp.responseText;
+				alert(result);
+				alert(result.name);
 			}
 		}
     }

@@ -20,8 +20,12 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.langsin.dao.OrderDao;
 import com.langsin.dao.ProductDao;
+import com.langsin.model.Order;
+import com.langsin.model.OrderDetail;
 import com.langsin.model.Product;
+import com.langsin.model.User;
 import com.langsin.util.CarSupport;
 import com.langsin.util.Page;
 
@@ -137,6 +141,33 @@ public class ProductServlet extends BasicServlet {
 		resp.sendRedirect("product/showcar.jsp");
 	}
 	
+	public void buildOrder(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException{
+		HttpSession session = req.getSession();
+		List<CarSupport> car = (List<CarSupport>) session.getAttribute("car");
+		User user = (User) session.getAttribute("user");
+		if(user==null){
+			resp.sendRedirect("login.jsp");
+			return;
+		}
+		Order order = new Order();
+		order.setOrderDate(new Date());
+		order.setUser(user);
+		order.setOrderDetail(new ArrayList<OrderDetail>());
+		
+		for(CarSupport cs : car){
+			OrderDetail od = new OrderDetail();
+			od.setProduct(cs.getProduct());
+			od.setCount(cs.getCount());
+			od.setOrder(order);
+			order.getOrderDetail().add(od);
+		}
+		
+		OrderDao odao = new OrderDao();
+		odao.buildOrder(order);
+		
+		
+		
+	}
 	
 	
 	

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,19 +19,17 @@ public class OrderDao {
 
 	public void buildOrder(Order order){
 		Connection conn = JdbcUtil.getConnection();
-		String sql = "insert into shop_order(order_date,user_id) value(now(),?)";
+		String sql = "insert into shop_order(order_date,user_id) value(?,?)";
 		String detailSql = "insert into shop_order_detail(order_id,product_id,count) value(?,?,?)";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			conn.setAutoCommit(false);
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, order.getUser().getId());
+			ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			ps.setTimestamp(1, new Timestamp(order.getOrderDate().getTime()));
+			ps.setInt(2, order.getUser().getId());
 			ps.execute();
-			
-			ps = conn.prepareStatement("select id from shop_order where user_id = ? order by order_date desc limit 1");
-			ps.setInt(1, order.getUser().getId());
-			rs  = ps.executeQuery();
+			rs  = ps.getGeneratedKeys();
 			int order_id = 0;
 			if(rs.next()){
 				order_id = rs.getInt(1);
@@ -44,9 +44,12 @@ public class OrderDao {
 			ps.executeBatch();
 			conn.commit();
 			conn.setAutoCommit(true);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			try {
-				conn.rollback();
+				boolean flag = conn.getAutoCommit();
+				if(!flag){
+					conn.rollback();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}

@@ -44,10 +44,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   			<td>
 	   				<a>查看</a>
 	   			</td>	
-   			
    			</tr>
    		
    		</c:forEach>
+   		<tr>
+   			<td colspan="6" align="right">
+   				<a href="product?tag=buildOrder">生成订单</a>
+   			</td>
+   		</tr>
    	
    	
    	</table>
