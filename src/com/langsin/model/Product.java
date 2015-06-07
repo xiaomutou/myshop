@@ -1,8 +1,5 @@
 package com.langsin.model;
-
 import java.util.Date;
-
-import com.google.gson.annotations.Expose;
 
 public class Product {
 
@@ -10,7 +7,7 @@ public class Product {
 	private String pname;
 	private double price;
 	private Date pdate;
-	@Expose(deserialize=false)
+	
 	private String image;
 	private String content;
 	private int ptype;
@@ -58,6 +55,5 @@ public class Product {
 	public void setPtype(int ptype) {
 		this.ptype = ptype;
 	}
-	
 	
 }

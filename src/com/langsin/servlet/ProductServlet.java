@@ -1,12 +1,10 @@
 package com.langsin.servlet;
 
-import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,11 +12,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.langsin.dao.OrderDao;
 import com.langsin.dao.ProductDao;
@@ -161,11 +154,21 @@ public class ProductServlet extends BasicServlet {
 			od.setOrder(order);
 			order.getOrderDetail().add(od);
 		}
-		
+		session.removeAttribute("car");
 		OrderDao odao = new OrderDao();
 		odao.buildOrder(order);
 		
+		resp.sendRedirect("product?tag=showOrder");
 		
+	}
+	
+	public void showOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+		OrderDao od = new OrderDao();
+		HttpSession session = req.getSession();
+		User user = (User) session.getAttribute("user");
+		List<Order> orderList = od.getOrderByUser(user);
+		req.setAttribute("orderList",orderList);
+		req.getRequestDispatcher("product/showOrder.jsp").forward(req,resp);
 		
 	}
 	

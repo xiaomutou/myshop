@@ -20,7 +20,7 @@
     <div style="margin:30 auto;text-align:center;font-size:20px">
     	<a href="product?tag=indexpage">首页</a> | 
     	<a href="product?tag=managercar">购物车</a> | 
-    	<a href="product?tag=showorder">订单</a> |　
+    	<a href="product?tag=showOrder">订单</a> |　
     	<a href="user?tag=logout">退出</a>
     </div>
   </body>
