@@ -34,6 +34,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			height:200px;
 		}
 	</style>
+	<script type="text/javascript" src="jquery/jquery-1.11.1.js"></script>
+  	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
   </head>
   
   <body>
@@ -271,10 +273,247 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  			</div>
 	  		</form>
 	  	</div>
+	  	<div class="col-md-6">
+	  		<form class="form-horizontal">
+				<div class="form-group has-success">
+					<label class="col-sm-4 control-label" >Email</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control"/>
+					</div>
+				</div>	 
+				<div class="form-group has-warning has-feedback">
+					<label class="col-sm-4 control-label" >Password</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control"/>
+						<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+					</div>
+				</div>	  	
+				<div class="form-group has-error has-feedback">
+					<label class="col-sm-4 control-label">birthday</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control"/>
+						<span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+					</div>
+				</div>	
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-8">
+						<div class="checkbox" >
+							<label>
+								<input type="checkbox"> remmber password
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group has-success has-feedback">
+					<label class="col-sm-4 control-label"></label>
+					<div class="col-sm-8">
+						<div class="input-group">
+							<span class="input-group-addon">@</span>
+							<input type="text" class="form-control"/>
+						</div>
+						<span class="glyphicon glyphicon-ok form-control-feedback"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-8">
+						<button type="submit"  class="btn btn-default">登录</button>
+					</div>
+				</div>
+	  		</form>
+	  	</div>
+	  	<div class="col-md-6">
+	  		<form>
+	  			<div class="form-group">
+	  				<input class="form-control input-lg" type="text"/>
+	  			</div>
+	  			<div class="form-group">
+	  				<input class="form-control" type="text"/>
+	  			</div>
+	  			<div class="form-group">
+	  				<input class="form-control input-sm" type="text"/>
+	  			</div>
+	  			<div class="form-group">
+	  				<select class="form-control input-lg"></select>
+	  			</div>
+	  			<div class="form-group">
+	  				<select class="form-control input-sm"></select>
+	  			</div>
+	  			
+	  		</form>
+	  	</div>
+	  	<div class="col-md-6">
+	  		<form class="form-horizontal">
+	  			<div class="form-group form-group-lg">
+	  				<label class="col-sm-4 control-form">username</label>
+	  				<div class="col-sm-8">
+	  					<input type="text" class="form-control">
+	  				</div>
+	  			</div>
+	  			<div class="form-group">
+	  				<label class="col-sm-4 control-form">username</label>
+	  				<div class="col-sm-8">
+	  					<input type="text" class="form-control">
+	  				</div>
+	  			</div>
+	  		</form>
+	  	</div>
+	  	<div class="col-md-6">
+	  	
+	  		<div class="row">
+	  			<div class="col-sm-2">
+	  				<input type="text" class="form-control"/>
+	  			</div>
+	  			<div class="col-sm-4">
+	  				<input type="text" class="form-control"/>
+	  			</div>
+	  			<div class="col-sm-6">
+	  				<input type="text" class="form-control"/>
+	  			</div>
+	  		</div>
+	  	</div>
+	  	<div class="col-md-6">
+	  		<a role="button" class="btn btn-default">link</a>
+	  		<button class="btn">button</button>
+	  		<input type="submit" class="btn" value="submit">
+	  	</div>
+	  	<div class="col-md-6">
+	  		<button class="btn btn-default">default</button>
+			<button class="btn btn-success">success</button>
+			<button class="btn btn-primary">primary</button>
+			<button class="btn btn-info">info</button>
+			<button class="btn btn-warning">warning</button>
+			<button class="btn btn-danger">danger</button>
+			<button class="btn btn-link">link</button>
+			<button class="btn btn-success btn-lg">btn-lg</button>
+			<button class="btn btn-success btn-sm">btn-sm</button>
+			<button class="btn btn-success btn-xs btn-block">btn-xs</button>
+	  	</div>
+	  	<div class="col-md-12">
+	  		<button class="btn btn-info">btn-info</button>
+	  		<button class="btn btn-info active">btn-info</button>
+	  		<button class="btn btn-info" disabled="disabled">btn-info</button>
+	  	</div>
+	  	<div class="col-md-3">
+	  		<img alt="" src="image/abc.png" class="img-responsive">
+	  	</div>
+	  	<div class="col-md-3">
+	  		<img alt="" src="image/abc.png" width="100%" class="img-rounded">
+	  	</div>
+	  	<div class="col-md-3">
+	  		<img alt="" src="image/abc.png" width="100%" class="img-circle">
+	  	</div>
+	  	<div class="col-md-3">
+	  		<img src="image/abc.png"  width="100%" class="img-thumbnail"/>
+	  	</div>
+	  	
 	  </div>
-	  
-	  
-	  
+	  <div class="col-md-12">
+	  	<p class="bg-primary">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+	  	<p class="bg-success">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+	  	<p class="bg-warning">Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+	  </div>
 	</div>
+	<div class="row" style="height:20px">
+		<div class="col-md-12">
+			<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<span class="caret"></span>
+		</div>
+		<div class="center-block hidden" style="width:200px;height:200px;background:red"></div>
+	</div>
+	<h1 class="text-hide">Custom heading</h1>
+	<div class="row" style="height: 2000px">
+		
+		<div class="col-md-12">
+			<div class="btn-group">
+				<button class="btn btn-default">
+					<span class="glyphicon glyphicon-align-left"></span>
+				</button>
+				<button class="btn btn-default">
+					<span class="glyphicon glyphicon-align-center"></span>
+				</button>
+				<button class="btn btn-default">
+					<span class="glyphicon glyphicon-align-right"></span>
+				</button>
+			</div>
+		</div>
+		<div class="col-md-3">
+			
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" >
+					Dropdown <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a>Action</a></li>
+					<li><a>Another Action</a></li>
+					<li><a>Somthing in here</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					dropup <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li class="dropdown-header">this is title</li>
+					<li><a>Action</a></li>
+					<li><a>Action</a></li>
+					<li class="dropdown-header">this is another title</li>
+					<li><a>Action</a></li>
+				</ul>
+			</div>
+			
+		</div>
+		<div class="col-md-3">
+			<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+					选择课程 <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li> <a>Java入门</a></li>
+					<li><a>JavaScript权威指南</a></li>
+					<li class="disabled"><a>Bootstrap实战</a></li>
+					<li class="divider"></li>
+					<li><a>Structs文档</a></li>
+				</ul>
+			</div>
+ 		</div>
+ 		<div class="col-md-12">
+ 			<div class="btn-toolbar" role="toolbar">
+ 				<div class="btn-group btn-group-lg" role="group">
+	 				<button class="btn btn-default">left</button>
+	 				<button class="btn btn-default">center</button>
+	 				<button class="btn btn-default">right</button>
+	 			</div>
+	 			<div class="btn-group btn-group-lg" role="group">
+	 				<button class="btn btn-default">left</button>
+	 				<button class="btn btn-default">center</button>
+	 				<button class="btn btn-default">right</button>
+	 			</div>
+	 			<div class="btn-group btn-group-lg" role="group">
+	 				<button class="btn btn-default">点击</button>
+	 			</div>
+ 			</div>
+ 		</div>
+			
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
   </body>
 </html>
