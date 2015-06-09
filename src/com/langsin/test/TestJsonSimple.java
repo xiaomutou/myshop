@@ -100,12 +100,31 @@ public class TestJsonSimple {
 		
 	}
 	
+	public void jsonToObject(){
+		ProductDao pd = new ProductDao();
+		Product p = pd.getProductById(1);
+		JSONObject json = JSONObject.fromObject(p,config());
+		String jsonString = json.toString();
+		
+		JSONObject jo = JSONObject.fromObject(jsonString);
+		System.out.println(jo);
+		
+		Product product = new Product();
+		product.setId(jo.getInt("id"));
+		product.setPname(jo.getString("pname"));
+		System.out.println(product.getPname());
+		System.out.println(product.getId());
+		
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		TestJsonSimple tjs = new TestJsonSimple();
 //		tjs.productToJson();
 //		tjs.listToJson();
-		tjs.mapToJson();
+//		tjs.mapToJson();
+		tjs.jsonToObject();
 	}
 	
 	public JsonConfig config(){
