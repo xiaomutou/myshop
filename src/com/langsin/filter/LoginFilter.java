@@ -25,7 +25,7 @@ public class LoginFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) resp;
 		String uri = request.getRequestURI();
 		String tag = request.getParameter("tag");
-		if(uri.endsWith("login.jsp") || "login".equals(tag) || "indexpage".equals(tag)){
+		if(uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith(".jpg") || uri.endsWith(".png") || uri.endsWith(".gif") || uri.endsWith("login.jsp") || "login".equals(tag) || "indexpage".equals(tag)){
 			chain.doFilter(request, response);
 		}else{
 			HttpSession session = request.getSession();
