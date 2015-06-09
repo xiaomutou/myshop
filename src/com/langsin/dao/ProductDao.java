@@ -116,6 +116,34 @@ public class ProductDao {
 		return product;
 	}
 	
+	public List<Product> getProductByPname(String pname){
+		Connection conn = JdbcUtil.getConnection();
+		String sql = "select * from shop_product where product_name like '%"+pname+"%' ";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Product> list = new ArrayList<Product>();
+		try {
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while(rs.next()){
+				Product product = new Product();
+				product = new Product();
+				product.setId(rs.getInt(1));
+				product.setPname(rs.getString(2));
+				product.setPrice(rs.getDouble(3));
+				product.setPdate(new Date(rs.getTimestamp(4).getTime()));
+				product.setImage(rs.getString(5));
+				product.setContent(rs.getString(6));
+				list.add(product);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally{
+			JdbcUtil.close(conn, ps, rs);
+		}
+		return list;
+	}
+	
 	public int getTotalCount(){
 		Connection conn = JdbcUtil.getConnection();
 		String sql = "select count(*) from shop_product";

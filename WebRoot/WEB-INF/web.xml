@@ -49,6 +49,7 @@
   	<servlet-class>com.langsin.servlet.MyUserServlet</servlet-class>
   </servlet>
   
+  
 
 
 
@@ -63,7 +64,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AjaxServlet</servlet-name>
-    <url-pattern>/ajax_test</url-pattern>
+    <url-pattern>/ajax</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ProductServlet</servlet-name>
