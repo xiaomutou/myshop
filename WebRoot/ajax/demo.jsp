@@ -113,8 +113,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  }
 	  }
 	  
-	  function pageInfo(pageNum){
+	  function pageInfo(pageType){
 		  xmlhttp = buildXMLHttpRequest();
+		  pageNum = 0;
+		  switch (pageType) {
+			case "first":
+				pageNum = 1;
+				break;
+			case "up" :
+				var cp = document.getElementById("currentPage").innerHTML;
+				if(cp<=1){
+					pageNum = 1
+				}else{
+					pageNum = cp -1;
+				}
+				break;
+			case "down" :
+				var tp = document.getElementById("totalPage").innerHTML;
+				var cp = document.getElementById("currentPage").innerHTML;
+				if(cp >= tp){
+					pageNum = tp
+				}else{
+					pageNum = parseInt(cp) + 1;
+				}
+				break;
+			case "last" :
+				var tp = document.getElementById("totalPage").innerHTML;
+				pageNum = tp;
+				break;
+			default:
+				pageNum = 1;
+				break;
+		  }
 		  xmlhttp.open("GET","ajax?tag=pageinfo&pageNum="+pageNum);
 		  xmlhttp.onreadystatechange = handlePage;
 		  xmlhttp.send();
@@ -126,6 +156,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  var jsonStr = xmlhttp.responseText;
 				  var json = eval("("+jsonStr + ")");
 				  var tby = document.getElementById("tby_page");
+				  var currentPage =document.getElementById("currentPage");
+				  var totalPage = document.getElementById("totalPage");
+				  currentPage.innerHTML = json.currentpage;
+				  totalPage.innerHTML = json.totalpage;
 				  var content = "";
 				  for(var i = 0;i<json.data.length;i++){
 					  content　+= "<tr><td>"+json.data[i].id+"</td><td>"+json.data[i].pname+"</td><td>"+json.data[i].price+"</td><td>"+json.data[i].pdate+"</td></tr>"
@@ -202,13 +236,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     		</tbody>
     		<tr>
     			<td colspan="4" align="center">
-    				<a href="javascript:void(0)" onclick="pageInfo(1)">首页</a>
-    				<a href="javascript:void(0)" onclick="pageInfo('-1')">上一页</a>
-    				<a >当前页</a>
-    				<a href->下一页</a>
-    				<a>最后一页</a>
-    				<a>共10页</a>
-    				<a>跳转到</a>页
+    				<a href="javascript:void(0)" onclick="pageInfo('first')">首页</a>
+    				<a href="javascript:void(0)" onclick="pageInfo('up')">上一页</a>
+    				<a >当前 <span id="currentPage"></span> 页</a>
+    				<a href="javascript:void(0)" onclick="pageInfo('down')">下一页</a>
+    				<a href="javascript:void(0)" onclick="pageInfo('last')">最后一页</a>
+    				<a>共 <span id="totalPage"></span> 页</a>
     			</td>
     		</tr>
     	</table>

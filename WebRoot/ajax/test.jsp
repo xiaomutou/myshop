@@ -42,7 +42,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     function callback(){
 		if(xmlhttp.readyState == 4){
+			alert(xmlhttp.status);
 			if(xmlhttp.status == 200){
+				alert("hello");
 				var result = xmlhttp.responseText;
 				alert(result);
 				alert(result.name);
