@@ -40,7 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   				<img src="${p.product.image }" width="100px" height="100px"/>
 	   			</td>
 	   			<td><fmt:formatDate value="${p.product.pdate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-	   			<td><input type="text" value="${p.count}" style="width:30px"></td>
+	   			<td>
+	   				<button onclick="">-</button>
+	   				<input type="text" value="${p.count}" style="width:30px">
+	   				<button onclick="">+</button>
+	   			</td>
+	   				
 	   			<td>
 	   				<a>查看</a>
 	   			</td>	
