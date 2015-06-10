@@ -18,6 +18,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -92,16 +94,12 @@ public class TestJson {
 		
 		GsonBuilder g2 = new GsonBuilder();
 		g2.setDateFormat("yyyy-MM-dd HH:mm:ss");
-		g2.registerTypeAdapter(Map.class, new JsonDeserializer<Object>() {
+		g2.registerTypeAdapter(Product.class,new JsonDeserializer<Product>() {
 
-			public Object deserialize(JsonElement json, Type typeOfT,
+			public Product deserialize(JsonElement json, Type typeOfT,
 					JsonDeserializationContext context)
 					throws JsonParseException {
-				JsonObject mapJsonObject = json.getAsJsonObject();
-				JsonElement mapjsonElement = mapJsonObject.get("product");
-				
-				JsonObject productJsonObject = mapjsonElement.getAsJsonObject();
-				
+				JsonObject productJsonObject = json.getAsJsonObject();
 				Product p = new Product();
 				p.setId(productJsonObject.get("id").getAsInt());
 				p.setPname(productJsonObject.get("pname").getAsString());
@@ -115,39 +113,82 @@ public class TestJson {
 				}
 				p.setImage(productJsonObject.get("image").getAsString());
 				p.setContent(productJsonObject.get("content").getAsString());
+				return p;
+			}
+		});
+		g2.registerTypeAdapter(Map.class, new JsonDeserializer<Object>() {
+
+			public Object deserialize(JsonElement json, Type typeOfT,
+					JsonDeserializationContext context)
+					throws JsonParseException {
 				
 				Map map = new HashMap();
-				map.put("product",p);
-				
-				JsonElement listJsonElement = mapJsonObject.get("list");
-				JsonArray ja = listJsonElement.getAsJsonArray();
-				ArrayList<Product> list = new ArrayList<Product>();
+				JsonObject mapJsonObject = json.getAsJsonObject();
+				JsonElement mapjsonElement = mapJsonObject.get("product");
+				Product p = context.deserialize(mapJsonObject.get("product"),Product.class);
+				map.put("product", p);
+				JsonArray ja = mapJsonObject.get("list").getAsJsonArray();
+				List<Product> list = new ArrayList<Product>();
 				for(int i = 0;i<ja.size();i++){
-					JsonElement je = ja.get(i);
-					JsonObject jeo = je.getAsJsonObject();
-					Product p2 = new Product();
-					p2.setId(jeo.get("id").getAsInt());
-					p2.setPname(jeo.get("pname").getAsString());
-					p2.setPrice(jeo.get("price").getAsDouble());
-					String gpdate2 = jeo.get("pdate").getAsString();
-					SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-					try {
-						p2.setPdate(sdf2.parse(gpdate2));
-					} catch (ParseException e) {
-						e.printStackTrace();
-					}
-					p2.setImage(jeo.get("image").getAsString());
-					p2.setContent(jeo.get("content").getAsString());
+					Product p2 = context.deserialize(ja.get(i), Product.class);
 					list.add(p2);
 				}
 				map.put("list", list);
 				
+				
+				
+//				JsonObject mapJsonObject = json.getAsJsonObject();
+//				JsonElement mapjsonElement = mapJsonObject.get("product");
+//				
+//				JsonObject productJsonObject = mapjsonElement.getAsJsonObject();
+//				
+//				Product p = new Product();
+//				p.setId(productJsonObject.get("id").getAsInt());
+//				p.setPname(productJsonObject.get("pname").getAsString());
+//				p.setPrice(productJsonObject.get("price").getAsDouble());
+//				String gpdate = productJsonObject.get("pdate").getAsString();
+//				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//				try {
+//					p.setPdate(sdf.parse(gpdate));
+//				} catch (ParseException e) {
+//					e.printStackTrace();
+//				}
+//				p.setImage(productJsonObject.get("image").getAsString());
+//				p.setContent(productJsonObject.get("content").getAsString());
+//				
+//				Map map = new HashMap();
+//				map.put("product",p);
+//				
+//				JsonElement listJsonElement = mapJsonObject.get("list");
+//				JsonArray ja = listJsonElement.getAsJsonArray();
+//				ArrayList<Product> list = new ArrayList<Product>();
+//				for(int i = 0;i<ja.size();i++){
+//					JsonElement je = ja.get(i);
+//					JsonObject jeo = je.getAsJsonObject();
+//					Product p2 = new Product();
+//					p2.setId(jeo.get("id").getAsInt());
+//					p2.setPname(jeo.get("pname").getAsString());
+//					p2.setPrice(jeo.get("price").getAsDouble());
+//					String gpdate2 = jeo.get("pdate").getAsString();
+//					SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//					try {
+//						p2.setPdate(sdf2.parse(gpdate2));
+//					} catch (ParseException e) {
+//						e.printStackTrace();
+//					}
+//					p2.setImage(jeo.get("image").getAsString());
+//					p2.setContent(jeo.get("content").getAsString());
+//					list.add(p2);
+//				}
+//				map.put("list", list);
+//				
 				return map;
 			}
 		});
 		Gson gson2 = g2.create();
 		Map map2 = gson2.fromJson(jsonStr, Map.class);
-		System.out.println(map2.get("product"));
+		System.out.println(((Product)map2.get("product")).getPname());
+		System.out.println(((Product)((List)map2.get("list")).get(4)).getPname());
 		
 	}
 	
