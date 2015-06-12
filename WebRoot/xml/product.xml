@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE products SYSTEM "product.dtd">
+<products>
+	<type id="C" name="diannao">
+		<tname>电脑</tname>
+	</type>
+	<type id="C2" name="dinano_mini">
+		<tname>电脑mini</tname>
+	</type>
+	<product type="C C2" id="P1" tname="dinannao2" note="good">
+		<pname>电脑</pname>
+		<price>1999</price>
+	</product>
+</products>

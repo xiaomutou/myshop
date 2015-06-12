@@ -1,0 +1,18 @@
+<!ELEMENT products (type*,product*)>
+<!ELEMENT product (pname,price)>
+<!ELEMENT pname (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT type (tname)>
+<!ELEMENT tname (#PCDATA)>
+
+<!ATTLIST product
+	id ID #REQUIRED
+	name CDATA #IMPLIED
+	type IDREFS #REQUIRED
+	tname NMTOKEN #IMPLIED
+	note (good|bad|verygood|verybad) "good"
+>
+<!ATTLIST type 
+	id ID #REQUIRED
+	name CDATA #REQUIRED
+>

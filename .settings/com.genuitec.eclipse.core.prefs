@@ -1,4 +1,5 @@
-#Tue Jun 09 14:45:44 CST 2015
+#Thu Jun 11 22:07:03 CST 2015
 eclipse.preferences.version=1
 validator.Checked=/
-validator.Unchecked=
+validator.Revalidate=true
+validator.Unchecked=WebRoot/xml

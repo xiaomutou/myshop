@@ -1,0 +1,9 @@
+<!ELEMENT student (id,name,age,empty,any,pcdata,brother+,sister*)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT empty EMPTY>
+<!ELEMENT any ANY>
+<!ELEMENT pcdata (#PCDATA)>
+<!ELEMENT brother (#PCDATA)>
+<!ELEMENT sister (#PCDATA)>

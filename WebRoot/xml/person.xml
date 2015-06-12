@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE person SYSTEM "person.dtd" >
+<person id="p12" shortname="zs" gender="男" dt="hello world" enum="王五">
+	<age></age>
+	<name>
+		hello
+	</name>
+	<brother>
+		<lastname></lastname>
+	</brother>
+	<male></male>
+</person>

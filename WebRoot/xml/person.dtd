@@ -1,0 +1,19 @@
+<!ELEMENT person ((name|age|birthday)*,brother+,sister*,(male|female))>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT birthday (#PCDATA)>
+<!ELEMENT brother (firstname?,lastname)>
+<!ELEMENT sister (#PCDATA)>
+<!ELEMENT male (#PCDATA)>
+<!ELEMENT female (#PCDATA)>
+
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>
+
+<!ATTLIST person 
+	id ID #REQUIRED
+	shortname CDATA #IMPLIED
+	gender CDATA #FIXED "男"
+	dt CDATA "hello world"
+	enum (张三 | 李四 | 王五) #REQUIRED
+>

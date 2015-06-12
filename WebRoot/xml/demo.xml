@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--  <!DOCTYPE student [
+	<!ELEMENT student (name,age)>
+	<!ELEMENT name (#PCDATA)>
+	<!ELEMENT age (#PCDATA)>
+]>-->
+<!DOCTYPE student SYSTEM "student.dtd">
+<student>
+	<id></id>
+	<name></name>
+	<age></age>
+	<empty/>
+	<any></any>
+	<pcdata></pcdata>
+	<brother></brother>
+	<brother></brother>
+	<sister></sister>
+</student>
