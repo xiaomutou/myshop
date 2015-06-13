@@ -67,7 +67,7 @@ public class OrderDao {
 		ResultSet rs = null;
 		ProductDao pd = new ProductDao();
 		try {
-			ps = conn.prepareStatement("select * from shop_order where user_id = ?");
+			ps = conn.prepareStatement("select * from shop_order where user_id = ? order by order_date desc");
 			ps.setInt(1, user.getId());
 			rs = ps.executeQuery();
 			while(rs.next()){

@@ -162,23 +162,54 @@ public class ProductServlet extends BasicServlet {
 		
 	}
 	
-	public void showOrder(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-		OrderDao od = new OrderDao();
-		HttpSession session = req.getSession();
-		User user = (User) session.getAttribute("user");
-		List<Order> orderList = od.getOrderByUser(user);
-		req.setAttribute("orderList",orderList);
-		req.getRequestDispatcher("product/showOrder.jsp").forward(req,resp);
+	public void showOrder(HttpServletRequest request ,HttpServletResponse response) throws IOException{
 		
+		HttpSession session = request.getSession();
+		List<CarSupport> car = (List<CarSupport>) session.getAttribute("car");
+		User user = (User) session.getAttribute("user");
+		if(user == null){
+			response.sendRedirect("login.jsp");
+			return;
+		}
+		
+		Order order = new Order();
+		order.setOrderDate(new Date());
+		order.setUser(user);
+		order.setConfirm(0);
+		order.setOrderDetail(new ArrayList<OrderDetail>());
+		
+		for(CarSupport cs : car){
+			OrderDetail od = new OrderDetail();
+			od.setOrder(order);
+			od.setProduct(cs.getProduct());
+			od.setCount(cs.getCount());
+			order.getOrderDetail().add(od);
+		}
+		
+		OrderDao odao = new OrderDao();
+		odao.buildOrder(order);
+		
+		session.removeAttribute("car");
+		
+		response.sendRedirect("product?tag=managerOrder");
 	}
 	
-	
-	
-	
-	
-	
-	
-	
+	public void managerOrder(HttpServletRequest request , HttpServletResponse response) throws IOException, ServletException{
+		
+		HttpSession session = request.getSession();
+		
+		OrderDao od = new OrderDao();
+		User user = (User) session.getAttribute("user");
+		if(user == null){
+			response.sendRedirect("login.jsp");
+			return;
+		}
+		List<Order> list = od.getOrderByUser(user);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("managerOrder.jsp").forward(request, response);
+		
+		
+	}
 	
 	
 	

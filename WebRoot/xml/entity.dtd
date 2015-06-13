@@ -1,0 +1,13 @@
+
+
+<!ELEMENT entities (entity)*>
+<!ELEMENT entity (name,type)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+
+<!ATTLIST entity 
+	id ID #REQUIRED
+	name CDATA #IMPLIED
+>
+
+<!ENTITY cy "￥">

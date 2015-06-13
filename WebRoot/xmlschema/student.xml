@@ -1,4 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<student xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="student.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<student id="aa" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="student.xsd"> 
 	
+	<name>zhangsan</name>
+	<age>119</age>
+	<birthday>1999-12-12</birthday>
+	<lastname lang="CN"/>
+	<car>奥迪</car>
+	<letter>a</letter>
+	<password>hello world</password>
+	<fullname>
+		<firstname>张</firstname>
+		<lastname>三</lastname>
+		<address>济南长清</address>
+		<phone>123123</phone>
+	</fullname>
+	<product id="12"/>
+	<food name="abc">hello</food>
+	<description>
+		hello <date>1999-08-12</date>
+	</description>
+	<job>
+		<teacher></teacher>
+		<teacher></teacher>
+		<teacher></teacher>
+		<teacher></teacher>
+	</job>
 </student>
