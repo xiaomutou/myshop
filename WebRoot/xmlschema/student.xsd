@@ -2,7 +2,9 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 	<xs:element name="student" >
 		<xs:complexType>
-			<xs:
+			<xs:sequence minOccurs="1">
+				<xs:element name="name" type="xs:string"></xs:element>
+			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 </xs:schema>

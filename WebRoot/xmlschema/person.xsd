@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="localhost" xmlns:abc="localhost" elementFormDefault="qualified">
+	<xs:element name="person">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="fullname">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="firstname" type="xs:string"/>
+							<xs:element name="lastname" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="gender">
+					<xs:complexType>
+						<xs:choice minOccurs="0" maxOccurs="5">
+							<xs:element name="male" type="xs:string"/>
+							<xs:element name="female" type="xs:string"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="course">
+					<xs:complexType>
+						<xs:all minOccurs="0" maxOccurs="1">
+							<xs:element name="java" type="xs:string"/>
+							<xs:element name="XML" type="xs:string"/>
+							<xs:element name="JavaScript" type="xs:string" maxOccurs="1"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="letter">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:group ref="abc:myGroup"/>
+							<xs:element name="c" type="xs:string"></xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="content">
+					<xs:complexType>
+						<xs:attributeGroup ref="abc:myattrGroup"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:group name="myGroup">
+		<xs:sequence>
+			<xs:element name="a" type="xs:string"/>
+			<xs:element name="b" type="xs:string"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:attributeGroup name="myattrGroup">
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="name" type="xs:string"/>
+		<xs:attribute name="comment" type="xs:string"/>
+	</xs:attributeGroup>
+
+
+</xs:schema>
