@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE person SYSTEM "ns1.dtd">
+<book xmlns:book="www.localhost/book" xmlns:person="www.localhost/person">
+
+	<book:title>XML教程</book:title>
+	<book:author>
+		<person:name>张三</person:name>
+		<person:title>著名作家</person:title>
+	</book:author>
+
+</book>
 

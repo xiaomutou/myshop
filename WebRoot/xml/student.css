@@ -1,0 +1,23 @@
+id {
+	width:200px;
+	height:200px;
+	background:gray;
+	position:absolute;
+}
+
+name{
+	width:200px;
+	height:200px;
+	background:red;
+	position:absolute;
+	left:200px;
+	top:200px;
+}
+age{
+	position:absolute;
+	width:200px;
+	height:200px;
+	left:400px;
+	top:400px;
+	background:green;
+}

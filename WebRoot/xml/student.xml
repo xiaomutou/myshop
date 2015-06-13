@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- <?xml-stylesheet type="text/css" href="student.css" ?> -->
+<!DOCTYPE student [
+	<!ENTITY name "李四">
+	<!ENTITY hello "你好，李四">
+]>
+<student id="20" gender="男">
+	<id>12</id>
+	<name>张三</name>
+	<age>25</age>
+	<age>40</age>
+	<birthday>1989-9-12</birthday>
+	<course />
+	
+	<content>hello world</content>
+	<p>&lt; &gt; &amp; &quot; &apos; &name; &hello;</p>
+	<brief>
+		<![CDATA[
+			for(int i= 0;i<12;i++{
+				System.out.println(i)
+			}
+			<hello></hello>
+		]]>
+	</brief>
+</student>
