@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:my="localhost" targetNamespace="localhost" elementFormDefault="qualified">
+	
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="username" type="xs:string"/>
+				<xs:element name="email" type="xs:string"/>
+				<xs:element name="address" type="xs:string"/>
+			</xs:all>
+			<xs:attribute name="userid" type="xs:positiveInteger"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="orderDetail">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="orderId" type="xs:integer"/>
+					<xs:element name="count" type="xs:positiveInteger"/>
+					<xs:element name="prduct" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="pname" type="xs:string"/>
+								<xs:element name="price" type="xs:decimal"/>
+								<xs:element name="pdate" type="xs:dateTime"></xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+
+	<xs:element name="order">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="orderDate" type="xs:date"/>
+				<xs:element ref="my:user"></xs:element>
+				<xs:element ref="my:orderDetail"></xs:element>
+			</xs:sequence>
+			<xs:attribute name="orderId" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

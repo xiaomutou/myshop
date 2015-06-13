@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="localhost" xmlns:abc="localhost" elementFormDefault="qualified">
+	targetNamespace="localhost" xmlns:my="localhost" elementFormDefault="qualified">
 	<xs:element name="person">
 		<xs:complexType>
 			<xs:sequence>
@@ -32,19 +32,73 @@
 				<xs:element name="letter">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:group ref="abc:myGroup"/>
+							<xs:group ref="my:myGroup"/>
 							<xs:element name="c" type="xs:string"></xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
 				<xs:element name="content">
 					<xs:complexType>
-						<xs:attributeGroup ref="abc:myattrGroup"/>
+						<xs:attributeGroup ref="my:myattrGroup"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ws">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:whiteSpace value="replace"></xs:whiteSpace>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="date">
+					<xs:simpleType>
+						<xs:list itemType="xs:date"></xs:list>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="union">
+					<xs:simpleType>
+						<xs:union memberTypes="my:sizeInt my:sizeStr"></xs:union>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="complex">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:int">
+								<xs:attribute name="id" type="xs:short"></xs:attribute>
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="choice">
+					<xs:complexType>
+						<xs:choice maxOccurs="20">
+							<xs:element ref="my:hw"/>
+						</xs:choice>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+<xs:simpleType name="sizeInt">
+	<xs:restriction base="xs:integer">
+		<xs:enumeration value="10"/>
+		<xs:enumeration value="20"/>
+		<xs:enumeration value="30"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="sizeStr">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="small"/>
+		<xs:enumeration value="middle"/>
+		<xs:enumeration value="big"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="complex">
+	<xs:sequence>
+		<xs:element name="hello" type="xs:string"></xs:element>
+	</xs:sequence>
+</xs:complexType>
 
 	<xs:group name="myGroup">
 		<xs:sequence>
@@ -57,6 +111,8 @@
 		<xs:attribute name="name" type="xs:string"/>
 		<xs:attribute name="comment" type="xs:string"/>
 	</xs:attributeGroup>
+	
+	<xs:element name="hw" type="xs:string"/>
 
 
 </xs:schema>

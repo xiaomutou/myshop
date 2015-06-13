@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- <?xml-stylesheet type="text/css" href="student.css" ?> -->
 <!DOCTYPE student [
 	<!ENTITY name "李四">
@@ -22,4 +22,6 @@
 			<hello></hello>
 		]]>
 	</brief>
+	<_comment></_comment>
+	<xml>hello</xml>
 </student>

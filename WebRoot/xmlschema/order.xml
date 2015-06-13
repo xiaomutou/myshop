@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<order orderId="11" xmlns="localhost" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="localhost order2.xsd">
+	<orderDate>2015-06-13</orderDate>
+	<user userid="22">
+		<username>张三</username>
+		<email>zhangsan@qq.com</email>
+		<address>济南长清</address>
+	</user>
+	<orderDetail>
+		<orderId>11</orderId>
+		<count>20</count>
+		<prduct>
+			<pname>鼠标</pname>
+			<price>22.22</price>
+			<pdate>2015-01-01T12:22:22</pdate>
+		</prduct>
+		<prduct>
+			<pname>鼠标</pname>
+			<price>22.22</price>
+			<pdate>2015-01-01T12:22:22</pdate>
+		</prduct>
+		<prduct>
+			<pname>鼠标</pname>
+			<price>22.22</price>
+			<pdate>2015-01-01T12:22:22</pdate>
+		</prduct>
+		<prduct>
+			<pname>鼠标</pname>
+			<price>22.22</price>
+			<pdate>2015-01-01T12:22:22</pdate>
+		</prduct>
+	</orderDetail>
+</order>
