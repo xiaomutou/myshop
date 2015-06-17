@@ -10,7 +10,7 @@ public class JdbcUtil {
 	
 	public static String dataName = "root";	
 	public static String dataPassword = "root";
-	public static String url="jdbc:mysql://localhost:3306/shop";
+	public static String url="jdbc:mysql://192.168.26.147:3306/shop";
 	public static String dirver = "com.mysql.jdbc.Driver";
 	
 	public static Connection getConnection(){
